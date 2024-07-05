@@ -41,7 +41,7 @@ const Navbar = () => {
       </div>
       <Link to="/home">
       <a className="btn btn-ghost text-xl">
-        <img src="/src/assets/ScalePal Default.svg" className="w-28"></img>
+        <img src="./assets/ScalePal Default.svg" className="w-28"></img>
       </a>
       </Link>
     </div>
