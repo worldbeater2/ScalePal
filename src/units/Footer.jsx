@@ -29,7 +29,7 @@ const Footer = () => {
 </footer>
 <footer className="footer text-white  border-base-300  px-10 py-4  bg-prussianblue font-outfit">
   <aside className="grid-flow-col items-center">
-  <img src="/src/assets/ScalePal Logo - White Version.svg" className="w-20  text-white"></img>
+  <img src="/assets/ScalePal Logo - White Version.svg" className="w-20  text-white"></img>
     <p>
    <span className='text-xs italic'>Beta v1.0 - 5/07/24 </span> © {new Date().getFullYear()} All rights reserved
     </p>
