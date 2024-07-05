@@ -54,7 +54,7 @@ const Homepage = () => {
   <div className="mockup-browser-toolbar">
     <div className="input">https://wwww.scalepal.io</div>
   </div>
-  <div className="bg-base-200  flex font-outfit text-base justify-center px-4 text-prussianblue  py-28">Coming Soon!🚀</div>
+  <div className="bg-base-200  flex font-outfit text-base justify-center px-4 text-prussianblue  py-28">Coming Soon! <span className="animate-bounce">🚀</span></div>
 </div>
         </div>
       </section>
