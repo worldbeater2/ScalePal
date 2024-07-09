@@ -29,10 +29,10 @@ const Navbar = () => {
           <Link to="/home"><li><a>Home</a></li></Link>
           <li>
             <a>Products</a>
-            <ul className="p-2">
+            {/* <ul className="p-2">
               <li><a>Submenu 1</a></li>
               <li><a>Submenu 2</a></li>
-            </ul>
+            </ul> */}
           </li>
           <Link to="/services"><li><a>Services</a></li></Link>
           <Link to="/blog"><li><a>Blog</a></li></Link>
@@ -40,9 +40,9 @@ const Navbar = () => {
         </ul>
       </div>
       <Link to="/home">
-      <a className="btn btn-ghost text-xl">
+      <div className="btn btn-ghost text-xl">
         <img src="/assets/ScalePal Default.svg" className="w-28"></img>
-      </a>
+      </div>
       </Link>
     </div>
     <div className="navbar-center hidden lg:flex">
