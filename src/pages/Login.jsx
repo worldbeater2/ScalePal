@@ -7,12 +7,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
-
 import { auth } from "@/firebase/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-
-
-
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -21,36 +17,35 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-       await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth, email, password);
       console.log("User logged in successfully");
+
       setTimeout(() => {
         window.location.href = "/dashboard";
       }, 1000);
+
       toast.success(" logged in successfully ⚫️ Welcome! 🚀", {
         position: "top-center",
-        autoClose: 3000,    
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      }
-    );
-    } catch (error) {
-      
-      toast.error(error.message, {
-        position: "top-center",
-        autoClose: 3000,    
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
       });
-      console.log(error.message); 
-    // 
-  };
-
+    } catch (error) {
+      toast.error(error.message, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      console.log(error.message);
+      //
+    }
   };
 
   return (
@@ -98,7 +93,11 @@ const Login = () => {
                 />
               </div>
 
-              <Button type="submit" className="w-full bg-rasonblack" onClick={handleSubmit}>
+              <Button
+                type="submit"
+                className="w-full bg-rasonblack"
+                onClick={handleSubmit}
+              >
                 Login
               </Button>
 
