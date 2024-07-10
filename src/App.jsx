@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Blog from "./pages/Blog";
 import Dashboard from "./pages/Dashboard";
 import Homepage from "./pages/Homepage";
@@ -9,6 +10,10 @@ import ScrollToTop from "./units/ScrollToTop";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { auth } from "./firebase/firebase";
+
+
+
 
 
 function App() {
