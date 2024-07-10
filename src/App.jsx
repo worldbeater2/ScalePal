@@ -1,20 +1,18 @@
-import { useEffect, useState } from "react";
-import Blog from "./pages/Blog";
-import Dashboard from "./pages/Dashboard";
-import Homepage from "./pages/Homepage";
-import Login from "./pages/Login";
-import Products from "./pages/Products";
-import Services from "./pages/Services";
-import Signup from "./pages/Signup";
-import ScrollToTop from "./units/ScrollToTop";
-import { Route, Routes } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { auth } from "./firebase/firebase";
-
-
-
-
+// App.jsx
+import React, { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { auth } from './firebase/firebase';
+import Blog from './pages/Blog';
+import Dashboard from './pages/Dashboard';
+import Homepage from './pages/Homepage';
+import Login from './pages/Login';
+import Products from './pages/Products';
+import Services from './pages/Services';
+import Signup from './pages/Signup';
+import ScrollToTop from './units/ScrollToTop';
+import ProtectedRoute from './units/ProtectedRoute';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,12 +20,11 @@ function App() {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user);
-      }
+      setUser(user);
       setIsLoading(false);
-      unsubscribe();
     });
+
+    return unsubscribe;
   }, []);
 
   if (isLoading) {
@@ -42,14 +39,22 @@ function App() {
     <>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={user ? <Dashboard /> : <Homepage />} />
+        {/* Public routes */}
+        <Route path="/" element={<Homepage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/services" element={<Services />} />
         <Route path="/home" element={<Homepage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/products" element={<Products />} />
+        
+        {/* Protected routes */}
+        <Route path="/dashboard" element={
+          <ProtectedRoute user={user}>
+            <Dashboard />
+          </ProtectedRoute>
+        } />
+  
       </Routes>
       <ToastContainer />
     </>
