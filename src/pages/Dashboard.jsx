@@ -9,6 +9,10 @@ import {
   Search,
   ShoppingCart,
   Users,
+  LayoutTemplate,
+  LoaderCircle,
+  BriefcaseBusiness,
+
 } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge";
@@ -101,7 +105,7 @@ const Dashboard = () => {
       <div className="hidden border-r bg-muted/40 md:block">
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-          <Link to="/home">
+          <Link to="/dashboard">
       <a className="btn btn-ghost text-xl">
         <img src="/assets/ScalePal Default.svg" className="w-28 text-black "></img> 
       </a>
@@ -124,25 +128,23 @@ const Dashboard = () => {
                 href="#"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
-                <ShoppingCart className="h-4 w-4" />
-                Orders
-                <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                  6
-                </Badge>
+               <BriefcaseBusiness className="h-4 w-4" />
+                Workspace
+               
               </Link>
               <Link
                 href="#"
                 className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
               >
-                <Package className="h-4 w-4" />
-                Products{" "}
+                <LayoutTemplate className="h-4 w-4"/>
+                Templates{" "}
               </Link>
               <Link
                 href="#"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
-                <Users className="h-4 w-4" />
-                Customers
+              <LoaderCircle className="h-4 w-4"/>
+                Status
               </Link>
               <Link
                 href="#"
@@ -191,7 +193,7 @@ const Dashboard = () => {
                   className="flex items-center gap-2 text-lg font-semibold"
                 >
                   <Package2 className="h-6 w-6" />
-                  <span className="sr-only">Acme Inc</span>
+                  <span className="sr-only">Scalepal</span>
                 </Link>
                 <Link
                   href="#"
@@ -204,25 +206,23 @@ const Dashboard = () => {
                   href="#"
                   className="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
                 >
-                  <ShoppingCart className="h-5 w-5" />
-                  Orders
-                  <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                    6
-                  </Badge>
+                  <BriefcaseBusiness className="h-5 w-5" />
+                  Workspace
+            
                 </Link>
                 <Link
                   href="#"
                   className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
                 >
-                  <Package className="h-5 w-5" />
-                  Products
+                  <LayoutTemplate className="h-5 w-5" />
+                  Templates
                 </Link>
                 <Link
                   href="#"
                   className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
                 >
-                  <Users className="h-5 w-5" />
-                  Customers
+                  <LoaderCircle className="h-5 w-5" />
+                  Status
                 </Link>
                 <Link
                   href="#"
