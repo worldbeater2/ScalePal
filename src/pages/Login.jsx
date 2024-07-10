@@ -8,9 +8,16 @@ import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
 import { auth } from "@/firebase/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "@/firebase/firebase";
+
 
 const Login = () => {
+
+
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -47,6 +54,46 @@ const Login = () => {
       //
     }
   };
+
+  async function googleSignup() {
+    try {
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      await setDoc(doc(db, "users", user.uid), {
+        firstName: user.displayName,
+        lastName: '',
+        email: user.email,
+        photoUrl: user.photoURL
+
+      });
+
+      toast.success("Logged in successfully ⚫️ Welcome! 🚀", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
+      window.location.href = "/dashboard";
+
+    } catch (error) {
+      toast.error(error.message, {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }
+
 
   return (
     <>
@@ -104,6 +151,7 @@ const Login = () => {
               <Button
                 variant="outline"
                 className="w-full bg-prussianblue text-white hover:bg-carebean hover:text-white"
+                onClick={googleSignup}
               >
                 Login with Google
               </Button>

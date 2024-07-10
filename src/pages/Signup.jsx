@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -12,6 +11,10 @@ import Navbar from "@/units/Navbar";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "@/firebase/firebase"; 
+import { GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
+
+
 
 
 const Signup = () => {
@@ -26,20 +29,21 @@ const Signup = () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       const user = auth.currentUser;
-      console.log(user);
+     
 
       if (user) {
         await setDoc(doc(db, "users", user.uid), {
-          firstName,
-          lastName,
-          email,
+          firstName: firstName,
+          lastName : lastName,
+          email    : email,
+          // photoUrl: "",
         });
       }
       console.log("User created successfully");
 
       window.location.href = "/login";
 
-      toast.success("User created successfully", {
+      toast.success("Account created successfully", {
         position: "top-center",
         autoClose: 3000,    
         hideProgressBar: true,
@@ -62,14 +66,42 @@ const Signup = () => {
     }
   }
 
-  const googleLogin = () => {
-    e.preventDefault();
+  async function googleSignup() {
     try {
-       signInWithGoogle( auth );
-      console.log("User logged in successfully");
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      await setDoc(doc(db, "users", user.uid), {
+        firstName: user.displayName,
+        lastName: '',
+        email: user.email,
+        photoUrl: user.photoURL
+
+      });
+
+      toast.success("Logged in successfully ⚫️ Welcome! 🚀", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
       window.location.href = "/dashboard";
+
     } catch (error) {
-      console.log(error.message);
+      toast.error(error.message, {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   }
 
@@ -125,7 +157,8 @@ const Signup = () => {
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full bg-prussianblue text-white hover:bg-carebean hover:text-white"
+                  className="w-full bg-prussianblue text-white hover:bg-carebean hover:text-white"  
+                  onClick={googleSignup}
                 >
                   Sign up with Google
                 </Button>
