@@ -31,7 +31,7 @@ const Login = () => {
         window.location.href = "/dashboard";
       }, 1000);
 
-      toast.success(" logged in successfully ⚫️ Welcome! 🚀", {
+      toast.success(" Logged in successfully ⚫️ Welcome! 🚀", {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: true,
