@@ -14,6 +14,7 @@ import Signup from './pages/Signup';
 import ScrollToTop from './units/ScrollToTop';
 import ProtectedRoute from './units/ProtectedRoute';
 
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
