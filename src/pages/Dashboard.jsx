@@ -270,13 +270,13 @@ const Dashboard = () => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuLabel className="cursor-pointer" >My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Support</DropdownMenuItem>
+              <DropdownMenuItem className="cursor-pointer">Settings</DropdownMenuItem>
+              <DropdownMenuItem className="cursor-pointer" >Support</DropdownMenuItem>
               <DropdownMenuSeparator />
 
-              <DropdownMenuItem onClick={() => handleLogout()} >Logout</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleLogout()} className="cursor-pointer" >Logout</DropdownMenuItem>
 
             </DropdownMenuContent>
           </DropdownMenu>
