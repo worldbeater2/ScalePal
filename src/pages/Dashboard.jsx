@@ -10,6 +10,8 @@ import {
   Search,
   ShoppingCart,
   Users,
+  LoaderCircle,
+  LayoutTemplate
 } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
@@ -38,6 +40,7 @@ import { Link } from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
 import { auth,db } from "@/firebase/firebase"
 import { doc, getDoc } from "firebase/firestore";
+import { BriefcaseBusiness } from "lucide-react"
 
 
 
@@ -74,32 +77,33 @@ const Dashboard = () => {
                 href="#"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
-                <Home className="h-4 w-4" />
+                <Home className="h-4 w-4" /> 
                 Dashboard
               </Link>
               <Link
                 href="#"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
-                <ShoppingCart className="h-4 w-4" />
-                Orders
-                <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
+               <BriefcaseBusiness className="h-4 w-4"/>
+                Workspace
+                {/* <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
                   6
-                </Badge>
+                </Badge> */}
+
               </Link>
               <Link
                 href="#"
                 className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
               >
-                <Package className="h-4 w-4" />
-                Products{" "}
+                <LayoutTemplate  className="h-4 w-4"/>
+               Templates{" "}
               </Link>
               <Link
                 href="#"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
-                <Users className="h-4 w-4" />
-                Customers
+             <LoaderCircle className="h-4 w-4" />
+                Status
               </Link>
               <Link
                 href="#"
@@ -148,7 +152,7 @@ const Dashboard = () => {
                   className="flex items-center gap-2 text-lg font-semibold"
                 >
                   <Package2 className="h-6 w-6" />
-                  <span className="sr-only">Acme Inc</span>
+                  <span className="sr-only">ScalePal</span>
                 </Link>
                 <Link
                   href="#"
@@ -162,7 +166,7 @@ const Dashboard = () => {
                   className="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
                 >
                   <ShoppingCart className="h-5 w-5" />
-                  Orders
+                  
                   <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
                     6
                   </Badge>

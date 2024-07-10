@@ -61,6 +61,10 @@ const Signup = () => {
     }
   }
 
+  const googleLogin = () => {
+    window.location.href = "/login";
+  }
+
   return (
     <>
       <section
