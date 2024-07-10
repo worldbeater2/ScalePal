@@ -9,9 +9,6 @@ import ScrollToTop from "./units/ScrollToTop";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useEffect, useState } from "react";
-import { auth } from "./firebase/firebase";
-
 
 
 function App() {

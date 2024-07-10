@@ -36,17 +36,6 @@ import { ToastContainer, toast } from "react-toastify";
 import { auth, db } from "@/firebase/firebase";
 import { doc, getDoc } from "firebase/firestore";
 
-
-
-
-
-
-
-
-
-
-
-
 const Dashboard = () => {
   const [userDetails, setUserDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
