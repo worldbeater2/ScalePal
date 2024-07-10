@@ -1,4 +1,3 @@
-
 import {
   Bell,
   CircleUser,
@@ -10,19 +9,17 @@ import {
   Search,
   ShoppingCart,
   Users,
-  LoaderCircle,
-  LayoutTemplate
 } from "lucide-react"
 
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -30,17 +27,14 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-
-import Loggednav from '@/units/Loggednav'
-import React from 'react'
-import { Link } from "react-router-dom"
-import { ToastContainer, toast } from 'react-toastify';
-import { auth,db } from "@/firebase/firebase"
+} from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import { auth, db } from "@/firebase/firebase";
 import { doc, getDoc } from "firebase/firestore";
-import { BriefcaseBusiness } from "lucide-react"
 
 
 
@@ -54,6 +48,61 @@ import { BriefcaseBusiness } from "lucide-react"
 
 
 const Dashboard = () => {
+  const [userDetails, setUserDetails] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const user = auth.currentUser;
+        if (user) {
+          const uid = user.uid;
+          const docRef = doc(db, "users", uid);
+          const docSnap = await getDoc(docRef);
+          if (docSnap.exists()) {
+            setUserDetails(docSnap.data());
+          } else {
+            console.log("No such document!");
+          }
+        } else {
+          console.log("No user is signed in");
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchUser();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <span className="loading loading-ring loading-lg"></span>
+      </div>
+    );
+  }
+
+  async function handleLogout() {
+    try {
+      await auth.signOut();
+      window.location.href = "/login";
+      toast.success("Logged out successfully", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   return (
 <>
 
@@ -77,33 +126,32 @@ const Dashboard = () => {
                 href="#"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
-                <Home className="h-4 w-4" /> 
+                <Home className="h-4 w-4" />
                 Dashboard
               </Link>
               <Link
                 href="#"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
-               <BriefcaseBusiness className="h-4 w-4"/>
-                Workspace
-                {/* <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
+                <ShoppingCart className="h-4 w-4" />
+                Orders
+                <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
                   6
-                </Badge> */}
-
+                </Badge>
               </Link>
               <Link
                 href="#"
                 className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
               >
-                <LayoutTemplate  className="h-4 w-4"/>
-               Templates{" "}
+                <Package className="h-4 w-4" />
+                Products{" "}
               </Link>
               <Link
                 href="#"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
-             <LoaderCircle className="h-4 w-4" />
-                Status
+                <Users className="h-4 w-4" />
+                Customers
               </Link>
               <Link
                 href="#"
@@ -152,7 +200,7 @@ const Dashboard = () => {
                   className="flex items-center gap-2 text-lg font-semibold"
                 >
                   <Package2 className="h-6 w-6" />
-                  <span className="sr-only">ScalePal</span>
+                  <span className="sr-only">Acme Inc</span>
                 </Link>
                 <Link
                   href="#"
@@ -166,7 +214,7 @@ const Dashboard = () => {
                   className="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
                 >
                   <ShoppingCart className="h-5 w-5" />
-                  
+                  Orders
                   <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
                     6
                   </Badge>
@@ -247,8 +295,7 @@ const Dashboard = () => {
             <h1 className="text-lg font-semibold md:text-2xl text-prussianblue">Dashboard</h1>
           </div>
           <div
-            className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm" x-chunk="dashboard-02-chunk-1"
-          >
+            className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm" x-chunk="dashboard-02-chunk-1">
             <div className="flex flex-col items-center gap-1 text-center">
               <h3 className="text-2xl font-bold tracking-tight">
               Nothing to see here
@@ -259,15 +306,12 @@ const Dashboard = () => {
      
             </div>
           </div>
-        </main>
-
-
+          </main>
+        </div>
       </div>
-    </div>
-
-
-</>
-  )
-}
+      <ToastContainer />
+    </>
+  );
+};
 
 export default Dashboard;

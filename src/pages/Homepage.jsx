@@ -6,7 +6,6 @@ const Homepage = () => {
   return (
     <>
       <Navbar />
-
       <section>
         <div className="w-screen h-[600px] flex flex-col items-center">
           <div className=" pt-5 mt-10 tracking-widest text-rasonblack text-center  text-5xl font-outfit w-[850px]">
@@ -48,17 +47,16 @@ const Homepage = () => {
               </svg>
             </button>
           </div>
-
-
           <div className="mockup-browser bg-prussianblue bg-opacity-90 border w-[1000px] font-outfit mt-5 mb-4">
-  <div className="mockup-browser-toolbar">
-    <div className="input">https://wwww.scalepal.io</div>
-  </div>
-  <div className="bg-base-200  flex font-outfit text-base justify-center px-4 text-prussianblue  py-28">Coming Soon! <span className="animate-bounce">🚀</span></div>
-</div>
+            <div className="mockup-browser-toolbar">
+              <div className="input">https://wwww.scalepal.io</div>
+            </div>
+            <div className="bg-base-200  flex font-outfit text-base justify-center px-4 text-prussianblue  py-28">
+              Coming Soon! <span className="animate-bounce">🚀</span>
+            </div>
+          </div>
         </div>
       </section>
-
       <Footer />
     </>
   );
