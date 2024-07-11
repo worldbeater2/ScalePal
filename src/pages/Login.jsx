@@ -29,7 +29,7 @@ const Login = () => {
       console.log("User logged in successfully");
 
       setTimeout(() => {
-        window.location.href = "/dashboardmain";
+        window.location.href = "/dashboard/overview";
       }, 1000);
 
       toast.success(" Logged in successfully ⚫️ Welcome! 🚀", {
