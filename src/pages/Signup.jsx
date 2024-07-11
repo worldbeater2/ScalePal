@@ -90,7 +90,7 @@ const Signup = () => {
         progress: undefined,
       });
 
-      window.location.href = "/dashboard";
+      window.location.href = "/dashboard/overview";
 
     } catch (error) {
       toast.error(error.message, {

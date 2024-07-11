@@ -14,6 +14,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { db } from "@/firebase/firebase";
 
 
+
 const Login = () => {
 
 
@@ -28,7 +29,7 @@ const Login = () => {
       console.log("User logged in successfully");
 
       setTimeout(() => {
-        window.location.href = "/dashboard";
+        window.location.href = "/dashboardmain";
       }, 1000);
 
       toast.success(" Logged in successfully ⚫️ Welcome! 🚀", {
@@ -79,7 +80,7 @@ const Login = () => {
         progress: undefined,
       });
 
-      window.location.href = "/dashboard";
+      window.location.href = "/dashboard/overview";
 
     } catch (error) {
       toast.error(error.message, {

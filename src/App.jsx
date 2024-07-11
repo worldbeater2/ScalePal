@@ -1,19 +1,23 @@
-// App.jsx
-import React, { useEffect, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { auth } from './firebase/firebase';
-import Blog from './pages/Blog';
-import Dashboard from './pages/Dashboard';
-import Homepage from './pages/Homepage';
-import Login from './pages/Login';
-import Products from './pages/Products';
-import Services from './pages/Services';
-import Signup from './pages/Signup';
-import ScrollToTop from './units/ScrollToTop';
-import ProtectedRoute from './units/ProtectedRoute';
-
+import React, { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { auth } from "./firebase/firebase";
+import Blog from "./pages/Blog";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Homepage from "./pages/Homepage";
+import Login from "./pages/Login";
+import Products from "./pages/Products";
+import Services from "./pages/Services";
+import Signup from "./pages/Signup";
+import ScrollToTop from "./units/ScrollToTop";
+import ProtectedRoute from "./units/ProtectedRoute";
+import Dashboardmain from "./pages/Dashboard/Dashboardmain";
+import { UserProvider } from "./units/UserContext";
+import DashAnalytics from "./pages/Dashboard/DashAnalytics";
+import DashStatus from "./pages/Dashboard/DashStatus";
+import DashTemplate from "./pages/Dashboard/DashTemplate";
+import DashboardWorkspace from "./pages/Dashboard/DashboardWorkspace";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -39,24 +43,34 @@ function App() {
   return (
     <>
       <ScrollToTop />
-      <Routes>
-        {/* Public routes */}
-        <Route path="/" element={<Homepage />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/home" element={<Homepage />} />
-        <Route path="/products" element={<Products />} />
-        
-        {/* Protected routes */}
-        <Route path="/dashboard" element={
-          <ProtectedRoute user={user}>
-            <Dashboard />
-          </ProtectedRoute>
-        } />
-  
-      </Routes>
+      <UserProvider>
+        <Routes>
+          {/* Public routes */}
+          <Route path="/" element={<Homepage />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/home" element={<Homepage />} />
+          <Route path="/products" element={<Products />} />
+
+          {/* Protected routes */}
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute user={user}>
+                <Dashboardmain />
+              </ProtectedRoute>
+            }
+          >
+            <Route path="templates" element={<DashTemplate />} />
+            <Route path="analytics" element={<DashAnalytics />} />
+            <Route path="workspace" element={<DashboardWorkspace />} />
+            <Route path="status" element={<DashStatus />} />
+            <Route path="overview" element={<Dashboard />} />
+          </Route>
+        </Routes>
+      </UserProvider>
       <ToastContainer />
     </>
   );
