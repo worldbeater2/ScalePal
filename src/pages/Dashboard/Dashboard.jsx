@@ -98,7 +98,7 @@ const Dashboard = () => {
             <div className="text-sm mb-3 font-semibold ml-1 md:text-xl text-prussianblue">
               Updates
             </div>
-            {articles.slice(0, 5).map((item, index) => (
+            {articles.slice(0,3).map((item, index) => (
               <div
                 className="card hover:cursor-pointer hover:opacity-60 card-side bg-base-100 w-80 h-28 mt-3"
                 key={index}
