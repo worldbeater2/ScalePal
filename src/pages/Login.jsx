@@ -29,7 +29,7 @@ const Login = () => {
       console.log("User logged in successfully");
 
       setTimeout(() => {
-        window.location.href = "/dashboard/overview";
+        window.location.href = "dashboard";
       }, 1000);
 
       toast.success(" Logged in successfully ⚫️ Welcome! 🚀", {
@@ -80,7 +80,7 @@ const Login = () => {
         progress: undefined,
       });
 
-      window.location.href = "/dashboard/overview";
+      window.location.href = "dashboard";
 
     } catch (error) {
       toast.error(error.message, {
@@ -171,6 +171,7 @@ const Login = () => {
         <div className="hidden bg-muted lg:block max-h-[850px]">
           <img
             src="https://images.unsplash.com/photo-1719306563732-d96ebd9163e5?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    
             width="1920"
             height="1080"
             className="h-full w-full   dark:brightness-[0.2] dark:grayscale"

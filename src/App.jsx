@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { auth } from "./firebase/firebase";
@@ -16,8 +16,10 @@ import Dashboardmain from "./pages/Dashboard/Dashboardmain";
 import { UserProvider } from "./units/UserContext";
 import DashAnalytics from "./pages/Dashboard/DashAnalytics";
 import DashStatus from "./pages/Dashboard/DashStatus";
-import DashTemplate from "./pages/Dashboard/DashTemplate";
+import DashTemplate from "./pages/Dashboard/Templates/DashTemplate";
 import DashboardWorkspace from "./pages/Dashboard/DashboardWorkspace";
+import Templateoverview from "./pages/Dashboard/Templates/Templateoverview";
+
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -63,11 +65,18 @@ function App() {
               </ProtectedRoute>
             }
           >
-            <Route path="templates" element={<DashTemplate />} />
+            {/* Nested routes for templating */}
+
+            <Route path="templates" element={<DashTemplate />}>
+              <Route index element={<Navigate to="docs" replace />} />
+              <Route path=":id" element={<Templateoverview />} />
+            </Route>
+
             <Route path="analytics" element={<DashAnalytics />} />
             <Route path="workspace" element={<DashboardWorkspace />} />
             <Route path="status" element={<DashStatus />} />
             <Route path="overview" element={<Dashboard />} />
+            <Route index element={<Dashboard />} />
           </Route>
         </Routes>
       </UserProvider>

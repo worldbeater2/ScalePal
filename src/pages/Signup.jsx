@@ -16,7 +16,6 @@ import { signInWithPopup } from "firebase/auth";
 
 
 
-
 const Signup = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -90,7 +89,7 @@ const Signup = () => {
         progress: undefined,
       });
 
-      window.location.href = "/dashboard/overview";
+      window.location.href = "dashboard";
 
     } catch (error) {
       toast.error(error.message, {
