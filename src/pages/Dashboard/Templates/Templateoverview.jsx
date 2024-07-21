@@ -57,19 +57,21 @@ const Templateoverview = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-10">
     {categories.map((category) => (
       <Card
         key={category.id}
-        className="w-[200px] hover:cursor-pointer ml-3 p-5 text-prussianblue hover:border-prussianblue hover:bg-prussianblue hover:text-white"
+        className="w-[200px] hover:cursor-pointer p-5 text-prussianblue hover:border-prussianblue hover:bg-prussianblue hover:text-white"
       >
         <Link to={`/dashboard/templates/${category.id}/documents`}>
+      
           <CardHeader className="flex flex-row items-center justify-center">
             <CardTitle className="text-sm font-semibold md:text-sm ml-2 hover:cursor-pointer">
               {category.name}
             </CardTitle>
           </CardHeader>
         </Link>
+        
       </Card>
     ))}
   </div>
