@@ -18,9 +18,9 @@ import DashAnalytics from "./pages/Dashboard/DashAnalytics";
 import DashStatus from "./pages/Dashboard/DashStatus";
 import DashTemplate from "./pages/Dashboard/Templates/DashTemplate";
 import DashboardWorkspace from "./pages/Dashboard/DashboardWorkspace";
-import TemplateOverview from "./pages/Dashboard/Templates/TemplateOverview";
-import DisplayDocument from "./pages/Dashboard/Templates/DisplayDocument";
 import AdminDashboard from "./pages/Dashboard/Admin/AdminDashboard";
+import TemplateOverview from "./pages/Dashboard/Templates/Templateoverview";
+import DisplayDocument from "./pages/Dashboard/Templates/DisplayDocument";
 
 
 function App() {
