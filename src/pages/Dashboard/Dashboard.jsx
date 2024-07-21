@@ -62,7 +62,7 @@ const Dashboard = () => {
               designed just for you.We're here to help you turn your vision into reality. Let's embark on this exciting journey together!
             </p>
             <Link to="/blog" >
-            <Button size="sm"  className="w-[100px] mt-5 hover:bg-carebean " variant="default">
+            <Button size="sm"  className="w-[100px] bg-carebean bg-opacity-80 mt-5 hover:bg-teal-700 " variant="default">
             Explore Blog
             </Button>
             </Link>
@@ -70,14 +70,13 @@ const Dashboard = () => {
 
           <div className="">
             <img
-              src="../../assets/rocket.svg"
+              src="../../assets/1.png"
               alt="rocket"
               className="w-[300px] h-[200px]"
             />
           </div>
         </div>
       </div>
-
       <div className="flex w-[100%] h-96 items-start justify-start rounded-sm p-5">
         <div className="flex w-[80%] flex-col items-start gap-1 text-center ">
           <div className="text-sm mb-3 font-semibold md:text-2xl text-prussianblue">
