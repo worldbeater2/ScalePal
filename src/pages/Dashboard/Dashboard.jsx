@@ -115,11 +115,12 @@ const Dashboard = () => {
         </div>
 
         {articles.length > 0 ? (
-          <div className="flex h-[450px] w-96 flex-col items-start ml-10 p-5 font-outfit">
+          <div className="flex h-[450px] w-96 flex-col items-start ml-10 p-14 -mt-10 font-outfit">
             <div className="text-sm mb-3 font-semibold ml-1 md:text-xl text-prussianblue">
               Updates
             </div>
             {articles.slice(0, 3).map((item, index) => (
+              
               <div
                 className="card hover:cursor-pointer hover:opacity-60 card-side bg-base-100 w-80 h-28 mt-3"
                 key={index}
