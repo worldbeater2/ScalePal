@@ -6,7 +6,7 @@ import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 
 
 
-const Templateoverview = () => {
+const TemplateOverview = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
@@ -78,4 +78,4 @@ const Templateoverview = () => {
   );
 };
 
-export default Templateoverview;
+export default TemplateOverview;

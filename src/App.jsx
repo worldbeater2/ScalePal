@@ -18,7 +18,9 @@ import DashAnalytics from "./pages/Dashboard/DashAnalytics";
 import DashStatus from "./pages/Dashboard/DashStatus";
 import DashTemplate from "./pages/Dashboard/Templates/DashTemplate";
 import DashboardWorkspace from "./pages/Dashboard/DashboardWorkspace";
-import Templateoverview from "./pages/Dashboard/Templates/Templateoverview";
+import TemplateOverview from "./pages/Dashboard/Templates/TemplateOverview";
+import DisplayDocument from "./pages/Dashboard/Templates/DisplayDocument";
+import AdminDashboard from "./pages/Dashboard/Admin/AdminDashboard";
 
 
 function App() {
@@ -55,6 +57,8 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/home" element={<Homepage />} />
           <Route path="/products" element={<Products />} />
+          <Route path="worldbeater" element={<AdminDashboard />} />
+          
 
           {/* Protected routes */}
           <Route
@@ -69,13 +73,17 @@ function App() {
 
             <Route path="templates" element={<DashTemplate />}>
               <Route index element={<Navigate to="docs" replace />} />
-              <Route path=":id" element={<Templateoverview />} />
+              <Route path=":id" element={<TemplateOverview />} />
+              <Route path="/dashboard/templates/:id/documents" element={<DisplayDocument />} />
+
+              {/* <Route path="docs" element={<Templateoverview />} /> */}
             </Route>
 
             <Route path="analytics" element={<DashAnalytics />} />
             <Route path="workspace" element={<DashboardWorkspace />} />
             <Route path="status" element={<DashStatus />} />
             <Route path="overview" element={<Dashboard />} />
+            
             <Route index element={<Dashboard />} />
           </Route>
         </Routes>
