@@ -8,26 +8,26 @@ const useFetch = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const options = {
-        method: 'GET',
-        url: 'https://yc-hacker-news-official.p.rapidapi.com/jobstories.json',
-        headers: {
-          'x-rapidapi-key': '1b55a810e7msh4ae840dc06326ecp1f4387jsn66ad8f4eb851',
-          'x-rapidapi-host': 'yc-hacker-news-official.p.rapidapi.com'
-        }
       // const options = {
-      //   method: "GET",
-      //   url: "https://wall-street-journal.p.rapidapi.com/api/v1/getArticleList",
-      //   params: { key: "BUSINESS" },
-      //   headers: {
-      //     "x-rapidapi-key":
-      //       "3ff77n8524amshbca8f16203db108p10340djsn4a32efc8cb41",
-      //     "x-rapidapi-host": "wall-street-journal.p.rapidapi.com",
-      //   },
+      //   method: 'GET',
+      //   url: 'https://yc-hacker-news-official.p.rapidapi.com/jobstories.json',
       //   headers: {
       //     'x-rapidapi-key': '1b55a810e7msh4ae840dc06326ecp1f4387jsn66ad8f4eb851',
-      //     'x-rapidapi-host': 'wall-street-journal.p.rapidapi.com'
+      //     'x-rapidapi-host': 'yc-hacker-news-official.p.rapidapi.com'
       //   }
+      const options = {
+        method: "GET",
+        url: "https://wall-street-journal.p.rapidapi.com/api/v1/getArticleList",
+        params: { key: "BUSINESS" },
+        headers: {
+          "x-rapidapi-key":
+            "3ff77n8524amshbca8f16203db108p10340djsn4a32efc8cb41",
+          "x-rapidapi-host": "wall-street-journal.p.rapidapi.com",
+        },
+        headers: {
+          'x-rapidapi-key': '1b55a810e7msh4ae840dc06326ecp1f4387jsn66ad8f4eb851',
+          'x-rapidapi-host': 'wall-street-journal.p.rapidapi.com'
+        }
       };
 
       try {
