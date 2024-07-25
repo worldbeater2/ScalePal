@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/card";
 import { CardHeader } from "@/components/ui/card";
 import { CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Folder } from "lucide-react";
+import { File } from "lucide-react";
 
 const DisplayDocument = () => {
   const { id } = useParams();
@@ -71,7 +71,7 @@ const DisplayDocument = () => {
               key={document.name}
              className="w-[250px] hover:cursor-pointer p-2 flex text-prussianblue hover:border-prussianblue hover:bg-prussianblue hover:text-white"
             >
-              <Folder size={24} strokeWidth={1} />
+              <File size={24} strokeWidth={1} />
               <CardHeader className="flex flex-row items-center justify-center">
                 <CardTitle className="text-sm font-normal md:text-sm ml-2 hover:cursor-pointer">
                 
