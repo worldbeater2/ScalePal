@@ -1,42 +1,52 @@
 import React, { useState } from "react";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { doc, updateDoc, arrayUnion } from "firebase/firestore";
+import { doc, getDoc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import { db } from "@/firebase/firebase";
-
 
 const UploadComponent = ({ categoryId }) => {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
+  const [alternativeName, setAlternativeName] = useState("");
+  const [source, setSource] = useState("");
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
-
   const handleUpload = async () => {
     if (!file) return;
 
     setUploading(true);
     const storage = getStorage();
-    const storageRef = ref(storage, `documents/${categoryId}/${file.name}`);
+    const storageRef = ref(storage,`documents/${categoryId}/${file.name}`);
 
     try {
       await uploadBytes(storageRef, file);
       const url = await getDownloadURL(storageRef);
 
-      const docRef = doc(db, "folders", categoryId);
+      const docRef = doc(db, "folders","docs");
+      const docSnap = await getDoc(docRef);
+
+      if (!docSnap.exists()) {
+        await setDoc(docRef, { categories: {} });
+      }
+
       await updateDoc(docRef, {
         [`categories.${categoryId}.documents`]: arrayUnion({
           name: file.name,
-          category,
+          alternativeName: alternativeName || file.name,
+          category: categoryId,
+          source: source || "Unknown",
           url,
           createdAt: new Date().toISOString(),
-          authour,
+          author: "Admin",
           type: file.type,
           size: file.size,
         }),
       });
 
       setFile(null);
+      setAlternativeName("");
+      setSource("");
       alert("File uploaded successfully!");
     } catch (error) {
       console.error("Error uploading file:", error);
@@ -49,6 +59,18 @@ const UploadComponent = ({ categoryId }) => {
   return (
     <div>
       <input type="file" onChange={handleFileChange} />
+      <input
+        type="text"
+        placeholder="Alternative Name"
+        value={alternativeName}
+        onChange={(e) => setAlternativeName(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Source"
+        value={source}
+        onChange={(e) => setSource(e.target.value)}
+      />
       <button onClick={handleUpload} disabled={uploading}>
         {uploading ? "Uploading..." : "Upload"}
       </button>

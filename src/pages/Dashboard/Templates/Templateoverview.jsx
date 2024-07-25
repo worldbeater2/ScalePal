@@ -3,8 +3,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebase/firebase";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-
-
+import { Folder } from "lucide-react";
 
 const TemplateOverview = () => {
   const { id } = useParams();
@@ -58,23 +57,25 @@ const TemplateOverview = () => {
 
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-10">
-    {categories.map((category) => (
-      <Card
-        key={category.id}
-        className="w-[200px] hover:cursor-pointer p-5 text-prussianblue hover:border-prussianblue hover:bg-prussianblue hover:text-white"
-      >
+      {categories.map((category) => (
         <Link to={`/dashboard/templates/${category.id}/documents`}>
       
-          <CardHeader className="flex flex-row items-center justify-center">
-            <CardTitle className="text-sm font-semibold md:text-sm ml-2 hover:cursor-pointer">
-              {category.name}
-            </CardTitle>
-          </CardHeader>
+        <Card
+          key={category.id}
+          className="w-[250px] hover:cursor-pointer p-2 flex text-prussianblue hover:border-prussianblue hover:bg-prussianblue hover:text-white"
+        >
+          <Folder size={24} strokeWidth={1} />
+         
+            <CardHeader className="flex flex-row items-center justify-center">
+              <CardTitle className="text-sm font-normal md:text-sm ml-2 hover:cursor-pointer">
+                {category.name}
+              </CardTitle>
+            </CardHeader>
+      
+        </Card>
         </Link>
-        
-      </Card>
-    ))}
-  </div>
+      ))}
+    </div>
   );
 };
 

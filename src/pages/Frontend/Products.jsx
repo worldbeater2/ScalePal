@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from '../units/Navbar'
-import Footer from '../units/Footer'
+import Navbar from '../../units/Navbar'
+import Footer from '../../units/Footer'
 
 const Products = () => {
 

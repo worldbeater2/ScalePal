@@ -3,6 +3,8 @@ import { getDocs, collection } from "firebase/firestore";
 import { db } from "@/firebase/firebase";
 import UploadComponent from "@/firebase/UploadComponent";
 
+
+
 const AdminDashboard = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -51,4 +53,3 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
-

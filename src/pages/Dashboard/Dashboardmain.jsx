@@ -3,13 +3,15 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 import {
   Bell,
   CircleUser,
-  Home,
-  LineChart,
   Menu,
   Search,
-  LayoutTemplate,
-  LoaderCircle,
   BriefcaseBusiness,
+  FileBox,
+  Loader2,
+  BarChart2,
+  SquareDashedBottom,
+  Home,
+
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -32,7 +34,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { auth } from "@/firebase/firebase";
-import { useUser } from "@/units/UserContext";
+import { useUser } from "@/units/UserContext/UserContext";
 
 const Dashboardmain = () => {
   const { userDetails, isLoading } = useUser();
@@ -103,7 +105,7 @@ const Dashboardmain = () => {
                 <span className="sr-only">Toggle notifications</span>
               </Button>
             </div>
-            <div className="flex-1">
+            <div className="flex-1 ">
               <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
                 <Link
                   to="/dashboard/overview"
@@ -116,28 +118,28 @@ const Dashboardmain = () => {
                   to="/dashboard/workspace"
                   className={getLinkClass("/dashboard/workspace")}
                 >
-                  <BriefcaseBusiness className="h-4 w-4" />
+                  <SquareDashedBottom className="h-4 w-4" />
                   Workspace
                 </Link>
                 <Link
                   to="/dashboard/templates"
                   className={getLinkClass("/dashboard/templates")}
                 >
-                  <LayoutTemplate className="h-4 w-4" />
+                  <FileBox className="h-4 w-4" />
                   Templates
                 </Link>
                 <Link
                   to="/dashboard/status"
                   className={getLinkClass("/dashboard/status")}
                 >
-                  <LoaderCircle className="h-4 w-4" />
-                  Status
+                  <Loader2 className="h-4 w-4" />
+                  Tasks
                 </Link>
                 <Link
                   to="/dashboard/analytics"
                   className={getLinkClass("/dashboard/analytics")}
                 >
-                  <LineChart className="h-4 w-4" />
+                  <BarChart2 className="h-4 w-4" />
                   Analytics
                 </Link>
               </nav>
@@ -145,14 +147,13 @@ const Dashboardmain = () => {
             <div className="mt-auto p-4">
               <Card x-chunk="dashboard-02-chunk-0">
                 <CardHeader className="p-2 pt-0 md:p-4">
-                  <CardTitle>Upgrade to Pro</CardTitle>
-                  <CardDescription>
-                    Unlock all features and get unlimited access to our support
-                    team.
+                  <CardTitle className="text-base text-prussianblue font-medium">Upgrade to Pro</CardTitle>
+                  <CardDescription className="text-sm font-light text-muted-foreground">
+                    Unlock all features and get unlimited access 
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
-                  <Button size="sm" className="w-full">
+                  <Button  className="w-full bg-prussianblue hover:bg-prussianblue text-sm bg-opacity-90">
                     Upgrade
                   </Button>
                 </CardContent>
@@ -173,7 +174,7 @@ const Dashboardmain = () => {
                   <span className="sr-only">Toggle navigation menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="flex flex-col">
+              <SheetContent side="left" className="flex flex-col font-medium">
                 <nav className="grid gap-2 text-lg font-medium">
                   <Link
                     to="#"
@@ -193,44 +194,43 @@ const Dashboardmain = () => {
                     to="/dashboard/workspace"
                     className={getLinkClass("/dashboard/workspace")}
                   >
-                    <BriefcaseBusiness className="h-5 w-5" />
+                    <SquareDashedBottom className="h-5 w-5" />
                     Workspace
                   </Link>
                   <Link
                     to="/dashboard/templates"
                     className={getLinkClass("/dashboard/templates")}
                   >
-                    <LayoutTemplate className="h-5 w-5" />
+                    <FileBox className="h-5 w-5" />
                     Templates
                   </Link>
                   <Link
                     to="/dashboard/status"
                     className={getLinkClass("/dashboard/status")}
                   >
-                    <LoaderCircle className="h-5 w-5" />
-                    Status
+                    <Loader2 className="h-5 w-5" />
+                    Tasks
                   </Link>
                   <Link
                     to="/dashboard/analytics"
                     className={getLinkClass("/dashboard/analytics")}
                   >
-                    <LineChart className="h-5 w-5" />
+                    <BarChart2 className="h-5 w-5" />
                     Analytics
                   </Link>
                 </nav>
                 <div className="mt-auto">
                   <Card>
                     <CardHeader>
-                      <CardTitle>Upgrade to Pro</CardTitle>
-                      <CardDescription>
-                        Unlock all features and get unlimited access to our
-                        support team.
-                      </CardDescription>
+                    <CardTitle className="text-base text-prussianblue font-medium">Upgrade to Pro</CardTitle>
+                  <CardDescription className="text-sm font-light text-muted-foreground">
+                    Unlock all features and get unlimited access 
+                  </CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <Button size="sm" className="w-full">
-                        Upgrade
-                      </Button>
+                    <Button  className="w-full bg-prussianblue hover:bg-prussianblue text-sm bg-opacity-90">
+                    Upgrade
+                  </Button>
                     </CardContent>
                   </Card>
                 </div>
@@ -242,8 +242,8 @@ const Dashboardmain = () => {
                   <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                   <Input
                     type="search"
-                    placeholder="Search ScalePal..."
-                    className="w-full appearance-none bg-background pl-8 shadow-none md:w-2/3 lg:w-1/3"
+                    placeholder="Explore ScalePal..."
+                    className="w-full text-sm appearance-none bg-background pl-8 shadow-none md:w-2/3 lg:w-1/3"
                   />
                 </div>
               </form>

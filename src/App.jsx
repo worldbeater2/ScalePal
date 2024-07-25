@@ -3,17 +3,17 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { auth } from "./firebase/firebase";
-import Blog from "./pages/Blog";
+import Blog from "./pages/Frontend/Blog";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import Homepage from "./pages/Homepage";
-import Login from "./pages/Login";
-import Products from "./pages/Products";
-import Services from "./pages/Services";
-import Signup from "./pages/Signup";
-import ScrollToTop from "./units/ScrollToTop";
-import ProtectedRoute from "./units/ProtectedRoute";
+import Homepage from "./pages/Frontend/Homepage";
+import Login from "./pages/Frontend/Login";
+import Products from "./pages/Frontend/Products";
+import Services from "./pages/Frontend/Services";
+import Signup from "./pages/Frontend/Signup";
+import ScrollToTop from "./units/ScrollfixTop/ScrollToTop";
+import ProtectedRoute from "./units/RouteProtection/ProtectedRoute";
 import Dashboardmain from "./pages/Dashboard/Dashboardmain";
-import { UserProvider } from "./units/UserContext";
+import { UserProvider } from "./units/UserContext/UserContext";
 import DashAnalytics from "./pages/Dashboard/DashAnalytics";
 import DashStatus from "./pages/Dashboard/DashStatus";
 import DashTemplate from "./pages/Dashboard/Templates/DashTemplate";
@@ -21,6 +21,7 @@ import DashboardWorkspace from "./pages/Dashboard/DashboardWorkspace";
 import AdminDashboard from "./pages/Dashboard/Admin/AdminDashboard";
 import TemplateOverview from "./pages/Dashboard/Templates/Templateoverview";
 import DisplayDocument from "./pages/Dashboard/Templates/DisplayDocument";
+
 
 
 function App() {
