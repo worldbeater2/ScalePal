@@ -40,13 +40,13 @@ const DisplayDocument = () => {
   }, [id]);
 
   if (loading) {
-    return <div className="flex items-center justify-center h-[600px]">
+    return <div className="flex items-center justify-center h-[600px] mt-6">
       <span className="loading loading-ring loading-lg"></span>
     </div>;
   }
   if (!isValidId) {
     return (
-      <div>
+      <div className="mt-6">
         No data found for category ID: {id}
         <div className="mt-5 flex justify-center " >
       <Button size="sm"  onClick={() => navigate("/dashboard/templates")} className="mb-4 ">
@@ -59,7 +59,7 @@ const DisplayDocument = () => {
 
   return (
    <>
-      <h2 className="text-base tracking-tighter text-prussianblue font-normal mb-4">Explore Documents</h2>
+      <h2 className="text-base tracking-tighter text-prussianblue font-normal mt-8">Explore Documents</h2>
 
       {documents.length > 0 ? (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-10">
@@ -87,7 +87,7 @@ const DisplayDocument = () => {
         
         
       ) : (
-        <div className="text-base text-prussianblue">No documents found.</div>
+        <div className="text-base text-prussianblue mt-6">No documents found <span className="animate-pulse">😕</span>.</div>
       )}
 
       <div className="mt-5 flex justify-center " >

@@ -41,12 +41,12 @@ const TemplateOverview = () => {
   }, [id]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="mt-6">Loading...</div>;
   }
 
   if (!isValidId) {
     return (
-      <div>
+      <div className="mt-6">
         No data found for ID: {id}
         <button onClick={() => navigate("/dashboard/templates")}>
           Go back to Templates
@@ -56,26 +56,32 @@ const TemplateOverview = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-10">
-      {categories.map((category) => (
-        <Link to={`/dashboard/templates/${category.id}/documents`}>
-      
-        <Card
-          key={category.id}
-          className="w-[250px] hover:cursor-pointer p-2 flex text-prussianblue hover:border-prussianblue hover:bg-prussianblue hover:text-white"
-        >
-          <Folder size={24} strokeWidth={1} />
-         
-            <CardHeader className="flex flex-row items-center justify-center">
-              <CardTitle className="text-sm font-normal md:text-sm ml-2 hover:cursor-pointer">
-                {category.name}
-              </CardTitle>
-            </CardHeader>
-      
-        </Card>
-        </Link>
-      ))}
-    </div>
+    <>
+    {/* Breadcrumbs */}
+
+
+      {/* Categories */}
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-10">
+        {categories.map((category) => (
+          <Link to={`/dashboard/templates/${category.id}/documents`}>
+            <Card
+              key={category.id}
+              className="w-[250px] hover:cursor-pointer p-2 flex text-prussianblue hover:border-prussianblue hover:bg-prussianblue hover:text-white"
+            >
+              <Folder size={24} strokeWidth={1} />
+
+              <CardHeader className="flex flex-row items-center justify-center">
+                <CardTitle className="text-sm font-normal md:text-sm ml-2 hover:cursor-pointer">
+                  {category.name}
+                </CardTitle>
+              </CardHeader>
+            </Card>
+          </Link>
+        ))}
+      </div>
+
+      {/* Categories ends */}
+    </>
   );
 };
 
