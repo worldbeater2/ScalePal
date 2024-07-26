@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, getDoc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import { db } from "@/firebase/firebase";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 const UploadComponent = ({ categoryId }) => {
   const [file, setFile] = useState(null);
@@ -58,22 +60,25 @@ const UploadComponent = ({ categoryId }) => {
 
   return (
     <div>
-      <input type="file" onChange={handleFileChange} />
-      <input
+      <Input className="hover:cursor-pointer" type="file" onChange={handleFileChange} />
+    
+      <Input
+      className="my-2"
         type="text"
         placeholder="Alternative Name"
         value={alternativeName}
         onChange={(e) => setAlternativeName(e.target.value)}
       />
-      <input
+      <Input
+      className="my-2"
         type="text"
         placeholder="Source"
         value={source}
         onChange={(e) => setSource(e.target.value)}
       />
-      <button onClick={handleUpload} disabled={uploading}>
+      <Button onClick={handleUpload} disabled={uploading}>
         {uploading ? "Uploading..." : "Upload"}
-      </button>
+      </Button>
     </div>
   );
 };
