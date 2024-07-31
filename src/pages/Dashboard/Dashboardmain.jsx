@@ -87,15 +87,17 @@ const Dashboardmain = () => {
 
   return (
     <>
-      <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] font-outfit">
-        <div className="hidden border-r bg-muted/40 md:block">
+      <div className="grid min-h-screen w-full  md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] font-outfit">
+        <div className="hidden bg-muted/40 md:block">
           <div className="flex h-full max-h-screen flex-col gap-2">
-            <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
+          
+          { /* Sidebar */}
+            <div className="flex h-14 items-center px-4 lg:h-[60px] lg:px-6">
               <Link to="/dashboard/overview">
                 <a className="btn btn-ghost text-xl">
                   <img
-                    src="/assets/ScalePal Default.svg"
-                    className="w-28 text-black"
+                    src="/assets/newlogoblue.svg"
+                    className="w-28 -ml-4 text-black"
                     alt="ScalePal Logo"
                   />
                 </a>
@@ -162,7 +164,9 @@ const Dashboardmain = () => {
           </div>
         </div>
         <div className="flex flex-col font-outfit">
-          <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
+
+          {/* Header */}
+          <header className="flex h-14 items-center gap-4  bg-muted/40 px-4 lg:h-[60px] lg:px-6">
             <Sheet>
               <SheetTrigger asChild>
                 <Button
@@ -174,6 +178,8 @@ const Dashboardmain = () => {
                   <span className="sr-only">Toggle navigation menu</span>
                 </Button>
               </SheetTrigger>
+
+              {/* Sidebar */}
               <SheetContent side="left" className="flex flex-col font-medium">
                 <nav className="grid gap-2 text-lg font-medium">
                   <Link
@@ -242,8 +248,8 @@ const Dashboardmain = () => {
                   <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                   <Input
                     type="search"
-                    placeholder="Explore ScalePal..."
-                    className="w-full text-sm appearance-none bg-background pl-8 shadow-none md:w-2/3 lg:w-1/3"
+                    placeholder="Search ScalePal..."
+                    className="w-full text-sm appearance-none bg-background pl-8 shadow-none md:w-1/3 lg:w-1/3 "
                   />
                 </div>
               </form>

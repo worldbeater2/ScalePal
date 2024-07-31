@@ -11,6 +11,7 @@ const BreadCrumbs = () => {
 
     const crumbs = location.pathname.split("/").filter((crumb) => crumb !== "").map((crumb) => {
       currentLink += `/${crumb}`;
+      
       return {
         path: currentLink,
         breadcrumb: crumb
@@ -24,6 +25,7 @@ const BreadCrumbs = () => {
     <>
       {/* Breadcrumbs starts */}
       <div className="breadcrumbs text-sm font-outfit text-prussianblue font-light ml-4 ">
+
         <ul>
           {crumbs.map((crumb, index) => (
             <li key={index}>
@@ -31,6 +33,8 @@ const BreadCrumbs = () => {
             </li>
           ))}
         </ul>
+
+
       </div>
       {/* Breadcrumbs ends */}
     </>

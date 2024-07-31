@@ -70,7 +70,7 @@ const Homepage = () => {
     <>
       <Navbar />
       <section>
-        <div className="w-screen h-[600px] flex flex-col items-center">
+        <div className="w-screen h-[600px] bg-opa flex flex-col items-center bg-cover bg-center">
           <div className="pt-5 mt-10 tracking-widest text-rasonblack text-center text-5xl font-outfit w-[850px]">
             Building the Future of Business Tools for Startups and Enterprises
           </div>

@@ -49,7 +49,7 @@ const DisplayDocument = () => {
       <div className="mt-6">
         No data found for category ID: {id}
         <div className="mt-5 flex justify-center " >
-      <Button size="sm"  onClick={() => navigate("/dashboard/templates")} className="mb-4 ">
+      <Button size="sm"  onClick={() => navigate("/dashboard/templates")} className="mb-4 bg-prussianblue hover:bg-prussianblue text-sm bg-opacity-90 ">
         Go back to Templates
       </Button>
       </div>
@@ -91,7 +91,7 @@ const DisplayDocument = () => {
       )}
 
       <div className="mt-5 flex justify-center " >
-      <Button size="sm"  onClick={() => navigate("/dashboard/templates")} className="mb-4 ">
+      <Button size="sm"  onClick={() => navigate("/dashboard/templates")} className="mb-4 bg-prussianblue hover:bg-prussianblue text-sm bg-opacity-90">
         Go back to Templates
       </Button>
       </div>
