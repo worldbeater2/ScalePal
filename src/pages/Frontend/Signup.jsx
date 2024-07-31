@@ -107,12 +107,25 @@ const Signup = () => {
   return (
     <>
       <section
-        className="bg-cover bg-center"
+        className="bg-cover bg-center font-outfit"
         style={{
-          backgroundImage: `url(${"https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"})`,
+          minHeight: "100vh",
+          minWidth: "100vw",
+          height: "100%",
+          width: "100%",
+          position: "absolute",
+          zIndex: -1,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          opacity: 1,
+          backgroundBlendMode: "multiply", // Adds a darker effect to the image
+          backgroundImage: `linear-gradient(
+            rgba(0, 0, 0, 0.2),
+            rgba(0, 0, 0, 0.2)
+          ), url(${"https://images.unsplash.com/photo-1588857015448-734faab35b84?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"})`, //https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
         }}
       >
-        <Navbar />
+        <Navbar className="text-prussianblue" />
   
           <Card className="mx-auto max-w-sm my-20 border-prussianblue">
             <CardHeader>
@@ -127,11 +140,13 @@ const Signup = () => {
                   <div className="grid gap-2">
                     <Label htmlFor="first-name">First name</Label>
                     <Input id="first-name" placeholder="Max" required
+   
                       onChange={(e) => setFirstName(e.target.value)} value={firstName} />
                   </div>
                   <div className="grid gap-2">
-                    <Label htmlFor="last-name">Last name</Label>
+                    <Label htmlFor="last-name" >Last name</Label>
                     <Input id="last-name" placeholder="Robinson" required
+
                       onChange={(e) => setLastName(e.target.value)} value={lastName} />
                   </div>
                 </div>
@@ -151,12 +166,13 @@ const Signup = () => {
                   <Input id="password" type="password"
                     onChange={(e) => setPassword(e.target.value)} value={password} />
                 </div>
-                <Button onClick={handleSignUp} type="submit" className="w-full"   >
+                <Button onClick={handleSignUp} type="submit" className="w-full bg-prussianblue hover:bg-sky-900 font-outfit"   >
                   Create an account
                 </Button>
+                <div className="text-center divider">or</div>
                 <Button
                   variant="outline"
-                  className="w-full bg-prussianblue text-white hover:bg-carebean hover:text-white"  
+                  className="w-full bg-carebean text-white hover:bg-teal-600 hover:text-white font-outfit"  
                   onClick={googleSignup}
                 >
                   Sign up with Google

@@ -143,7 +143,7 @@ const Login = () => {
                 Login
               </Button>
 
-              <div className="text-center divider">or</div>
+              <div className="text-center divider font">or</div>
 
               <Button
                 variant="outline"
