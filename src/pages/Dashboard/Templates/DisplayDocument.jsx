@@ -14,6 +14,7 @@ const DisplayDocument = () => {
   const [loading, setLoading] = useState(true);
   const [isValidId, setIsValidId] = useState(true);
   const [selectedDocument, setSelectedDocument] = useState(null);
+  const [showPdf, setShowPdf] = useState(false);
 
   useEffect(() => {
     const fetchDocuments = async () => {
@@ -42,6 +43,12 @@ const DisplayDocument = () => {
 
   const handleDocumentClick = (document) => {
     setSelectedDocument(document);
+    setShowPdf(true);
+  };
+
+  const handleBackClick = () => {
+    setShowPdf(false);
+    setSelectedDocument(null);
   };
 
   if (loading) {
@@ -65,6 +72,31 @@ const DisplayDocument = () => {
             Go back to Templates
           </Button>
         </div>
+      </div>
+    );
+  }
+
+  if (showPdf && selectedDocument) {
+
+    return (
+      <div className="flex flex-col items-center justify-center h-screen mt-7">
+        <h3 className="text-sm font-semibold mb-2 text-center font-outfit  text-prussianblue underline">
+          {selectedDocument.alternativeName || selectedDocument.name}
+        </h3>
+        <iframe
+          src={`${selectedDocument.url}#toolbar=0`}
+          width="793.7px"
+          height="1122.52px"
+          style={{ border: "none" }}
+          title={selectedDocument.name}
+        />
+        <Button
+          size="sm"
+          onClick={handleBackClick}
+          className="mt-4 bg-prussianblue hover:bg-prussianblue text-sm bg-opacity-90"
+        >
+          Go back
+        </Button>
       </div>
     );
   }
@@ -95,19 +127,6 @@ const DisplayDocument = () => {
       ) : (
         <div className="text-base text-prussianblue mt-6">
           No documents found <span className="animate-pulse">😕</span>.
-        </div>
-      )}
-
-      {selectedDocument && (
-        <div className="mt-4">
-          <h3 className="text-lg font-semibold mb-2">{selectedDocument.name}</h3>
-          <iframe
-            src={`${selectedDocument.url}#toolbar=0`}
-            width="100%"
-            height="600px"
-            style={{ border: "none" }}
-            title={selectedDocument.name}
-          />
         </div>
       )}
 
