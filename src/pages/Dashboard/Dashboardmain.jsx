@@ -78,7 +78,7 @@ const Dashboardmain = () => {
     // Check if the current URL path matches the given path
     if (location.pathname === path) {
       // Return the CSS class name for the active link with background color and text color
-      return "flex items-center gap-3 rounded-lg px-3 py-2 bg-prussianblue text-white transition-all";
+      return "flex items-center gap-3 rounded-lg px-3 py-2 bg-prussianblue text-white transition-all bg-opacity-90";
     } else {
       // Return the CSS class name for the inactive link with default text color and hover effect
       return "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary";
