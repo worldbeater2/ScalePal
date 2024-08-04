@@ -1,0 +1,12 @@
+.editor-container {
+    width: 100%;
+    height: 100vh;
+    border: 1px none #ccc;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+  
+  .editor-container p {
+    margin: 1em 0;
+    line-height: 1.6;
+  }

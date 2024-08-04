@@ -107,11 +107,11 @@ const Dashboardmain = () => {
                 <span className="sr-only">Toggle notifications</span>
               </Button>
             </div>
-            <div className="flex-1 ">
-              <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
+            <div className="flex-1 ml-1">
+              <nav className="grid items-start px-2 text-sm font-normal  lg:px-4 tracking-normal ">
                 <Link
                   to="/dashboard/overview"
-                  className={getLinkClass("/dashboard/overview")}
+                  className={getLinkClass("/dashboard/overview")} 
                 >
                   <Home className="h-4 w-4" />
                   Dashboard
@@ -181,7 +181,7 @@ const Dashboardmain = () => {
 
               {/* Sidebar */}
               <SheetContent side="left" className="flex flex-col font-medium">
-                <nav className="grid gap-2 text-lg font-medium">
+                <nav className="grid gap-2 text-lg font-medium tracking-normal">
                   <Link
                     to="#"
                     className="flex items-center gap-2 text-lg font-semibold"
