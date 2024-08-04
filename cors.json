@@ -1,0 +1,10 @@
+
+
+[
+     {
+       "origin": ["https://scalepal.vercel.app"],
+       "method": ["GET", "HEAD", "PUT", "POST", "DELETE"],
+       "maxAgeSeconds": 3600
+     }
+   ]
+   
