@@ -2,9 +2,10 @@
 
 [
      {
-       "origin": ["https://scalepal.vercel.app"],
+       "origin": ["https://scalepal.vercel.app","http://localhost:5173"],
        "method": ["GET", "HEAD", "PUT", "POST", "DELETE"],
        "maxAgeSeconds": 3600
      }
    ]
+
    

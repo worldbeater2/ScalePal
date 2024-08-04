@@ -14,7 +14,7 @@ import "./DisplayDocument.css";
 
 // Function to parse RTF content to HTML
 const parseRTF = (rtfContent) => {
-  return mammoth.convertToHtml({ 
+  return mammoth.convertToHtml({
     arrayBuffer: rtfContent,
     preserveEmptyParagraphs: true,
     styleMap: [
@@ -26,7 +26,7 @@ const parseRTF = (rtfContent) => {
       let processedHTML = result.value
         .replace(/<p>\s*<\/p>/g, '<p>&nbsp;</p>')
         .replace(/<li>\s*<\/li>/g, '<li>&nbsp;</li>');
-      
+
       return processedHTML;
     })
     .catch(error => {
@@ -58,7 +58,7 @@ const parseHTMLToBlocks = (html) => {
         case 'h6':
           blocks.push({
             type: 'header',
-            data: { 
+            data: {
               text: node.textContent,
               level: parseInt(node.tagName.charAt(1))
             }
@@ -92,7 +92,7 @@ const DisplayDocument = () => {
   const [isValidId, setIsValidId] = useState(true);
   const [selectedDocument, setSelectedDocument] = useState(null);
   const [showEditor, setShowEditor] = useState(false);
-  
+
   const editorInstance = useRef(null);
   const editorContainer = useRef(null);
   const { setShowBreadcrumbs } = useOutletContext();
@@ -218,71 +218,71 @@ const DisplayDocument = () => {
     );
   }
 
-  if (showEditor && selectedDocument) {
-    return (
-      <div className="flex flex-col min-h-screen">
-        <div className="flex justify-between items-center p-4  bg-gray-100">
-          <button
-            onClick={handleBackClick}
-            className="text-prussianblue hover:underline text-sm font-outfit"
-          >
-            Back
-          </button>
-          <h3 className="text-sm font-normal tracking-normal text-prussianblue">
-            {selectedDocument.alternativeName || selectedDocument.name}
-          </h3>
-          <button
-            onClick={handleSaveClick}
-            className="text-prussianblue hover:underline text-sm font-outfit"
-          >
-            Save
-          </button>
-        </div>
-        <div className="flex-grow p-4">
-          <div ref={editorContainer} className="editor-container w-full" />
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="container mx-auto px-4 py-8">
-      {/* <h2 className="text-normal font-semibold text-prussianblue mb-6">
-        Explore Documents
-      </h2> */}
-
-      {documents.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-2">
-          {documents.map((document) => (
-            <Card
-              key={document.name}
-              className="w-[250px] hover:cursor-pointer p-2 flex text-prussianblue hover:border-prussianblue hover:bg-prussianblue hover:text-white"
-              onClick={() => handleDocumentClick(document)}
+    <div className="container mx-auto px-4 mt-5 py-8">
+      {showEditor && selectedDocument ? (
+        <div className="flex flex-col min-h-screen">
+          <div className="flex justify-between items-center p-4 bg-gray-100">
+            <button
+              onClick={handleBackClick}
+              className="text-prussianblue hover:underline text-sm font-outfit"
             >
-              <File size={24} strokeWidth={1} />
-              <CardHeader className="flex flex-row items-center justify-center">
-                <CardTitle className="text-sm font-normal md:text-sm ml-2 hover:cursor-pointer">
-                  {document.alternativeName || document.name}
-                </CardTitle>
-              </CardHeader>
-            </Card>
-          ))}
+              Back
+            </button>
+            <h3 className="text-sm font-normal tracking-normal text-prussianblue">
+              {selectedDocument.alternativeName || selectedDocument.name}
+            </h3>
+            <button
+              onClick={handleSaveClick}
+              className="text-prussianblue hover:underline text-sm font-outfit"
+            >
+              Save
+            </button>
+          </div>
+          <div className="flex-grow p-4">
+            <div ref={editorContainer} className="editor-container w-full" />
+          </div>
         </div>
       ) : (
-        <p className="text-lg text-prussianblue">
-          No documents found <span className="animate-pulse">😕</span>
-        </p>
-      )}
+        <div>
+          <h2 className="text-normal font-semibold text-prussianblue mb-6">
+            Explore Documents
+          </h2>
 
-      <div className="mt-12 flex flex-row items-end justify-center ">
-        <Button
-          size="sm"
-          onClick={() => navigate("/dashboard/templates")}
-          className="bg-prussianblue hover:bg-prussianblue/90 text-white"
-        >
-          Go back to Templates
-        </Button>
-      </div>
+          {documents.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-2">
+              {documents.map((document) => (
+                <Card
+                  key={document.name}
+                  className="w-[250px] hover:cursor-pointer p-2 flex text-prussianblue hover:border-prussianblue hover:bg-prussianblue hover:text-white"
+                  onClick={() => handleDocumentClick(document)}
+                >
+                  <File size={24} strokeWidth={1} />
+                  <CardHeader className="flex flex-row items-center justify-center">
+                    <CardTitle className="text-sm font-normal md:text-sm ml-2 hover:cursor-pointer">
+                      {document.alternativeName || document.name}
+                    </CardTitle>
+                  </CardHeader>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <p className="text-lg text-prussianblue">
+              No documents found <span className="animate-pulse">😕</span>
+            </p>
+          )}
+
+          <div className="mt-12 flex flex-row items-end justify-center">
+            <Button
+              size="sm"
+              onClick={() => navigate("/dashboard/templates")}
+              className="bg-prussianblue hover:bg-prussianblue/90 text-white"
+            >
+              Go back to Templates
+            </Button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
